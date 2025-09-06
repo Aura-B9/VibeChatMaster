@@ -1,0 +1,293 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --background-color: #ecf0f1;
+    --message-bg-color: #f5f5f5;
+    --my-message-bg-color: #dcf8c6;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+}
+#profiles{
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  width: 100%;
+  max-width: 600px;
+  padding-top:15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--secondary-color);
+  border-radius: 8px 8px 0 0 ; 
+  overflow: hidden;
+  text-align:center;
+}
+
+#profiles button{
+  cursor:pointer;
+  background-color:var(--primary-color);
+  border:none;
+  outline:none;
+  font-family:arial;
+  border-radius:20px;
+  color: white;
+  padding: 10px 20px;
+  margin-left: 10px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s;
+
+  
+  &:hover{
+  	background-color:#2980b9;
+  }
+}
+
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    height:  90vh   ;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    overflow: hidden;
+  	border-radius:10px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    color: white;
+    position: relative;
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+#status-display {
+    font-size: 0.8rem;
+    color: #bdc3c7;
+    position: absolute;
+    bottom: 5px;
+    left: 15px;
+}
+
+#change-room-btn {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+#change-room-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message-wrapper {
+    display: flex;
+}
+
+.message {
+    padding: 10px 15px;
+    border-radius: 18px;
+    font-size: 1rem;
+    max-width: 75%;
+    word-wrap: break-word;
+}
+
+.my-message {
+    align-self: flex-end;
+}
+
+.my-message .message {
+    background-color: var(--my-message-bg-color);
+    border-bottom-right-radius: 4px;
+}
+
+.other-message {
+    align-self: flex-start;
+}
+
+.other-message .message {
+    background-color: var(--message-bg-color);
+    border-bottom-left-radius: 4px;
+}
+
+.timestamp {
+    font-size: 0.7rem;
+    color: #888;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.system-message {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    margin: 10px 0;
+    font-size: 0.9rem;
+}
+
+#input-container {
+    display: flex;
+    padding: 10px;
+    justify-content: space-evenly;
+    background-color: var(--message-bg-color);
+    border-top: 1px solid #ddd;
+}
+
+#message-input {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    outline: none;
+}
+
+#addname{
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+ }
+
+#send-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#send-button:hover:not(:disabled) ,#addname:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+#message-input:disabled,
+#send-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* --- Modal Styles --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 20; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+#room-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#join-room-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#name-modal .changeN{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    text-align: center;
+    font-size:1.1rem ;
+    margin: 20px;
+}
+
+#name-modal .changeN input{
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 15px 0 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#name-modal button{
+    cursor:pointer;
+    background-color:var(--primary-color);
+    border:none;
+    outline:none;
+    font-family:arial;
+    border-radius:20px;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+
+    &:hover{
+        background-color:#2980b9;
+    }
+}
+
+/* --- Responsive Design for Smaller Screens --- */
+@media (max-width: 600px) {
+    #chat-container {
+        border-radius: 0;
+    }
+}
